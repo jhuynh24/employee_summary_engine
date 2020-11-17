@@ -10,6 +10,59 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+var employees = [];
+
+function mainMenu() {
+    inquirer.prompt({
+        type: "list",
+        name: "menu",
+        message: "What employee would you like to create?",
+        choices: ["add manager", "add engineer", "add intern", "build team"]
+    }).then(answers => {
+        if (answers.menu === "add manager") {
+            //callback addManager function
+            addManager();
+        }
+        else if (answers.menu === "add engineer") {
+            //callback addEngineer function
+        }
+        else if (answers.menu === "add intern") {
+            //callback addIntern function
+        }
+        else {
+            //callback createTeam
+        }
+    })
+}
+
+function addManager() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "employeeName",
+            message: "What is your name?"
+        },
+        {
+            type: "input",
+            name: "employeeId",
+            message: "What is your ID?"
+        },
+        {
+            type: "input",
+            name: "employeeEmail",
+            message: "What is your email?"
+        },
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "What is your office number?"
+        }
+    ]).then(answers => {
+        const manager = new Manager(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.officeNumber);
+        employees.push(manager);
+        mainMenu();
+    })
+}
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -33,3 +86,5 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+
+mainMenu();
