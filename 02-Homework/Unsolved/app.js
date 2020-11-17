@@ -64,6 +64,70 @@ function addManager() {
     })
 }
 
+function addEngineer() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "employeeName",
+            message: "What is your name?"
+        },
+        {
+            type: "input",
+            name: "employeeId",
+            message: "What is your ID?"
+        },
+        {
+            type: "input",
+            name: "employeeEmail",
+            message: "What is your email?"
+        },
+        {
+            type: "input",
+            name: "github",
+            message: "What is your Github username?"
+        }
+    ]).then(answers => {
+        const engineer = new Engineer(answers.employeeName, answers.employeeId, answers.employeeId, github);
+        employees.push(engineer);
+        mainMenu();
+    })
+}
+
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "employeeName",
+            message: "What is your name?"
+        },
+        {
+            type: "input",
+            name: "employeeId",
+            message: "What is your ID?"
+        },
+        {
+            type: "input",
+            name: "employeeEmail",
+            message: "What is your email?"
+        },
+        {
+            type: "input",
+            name: "school",
+            message: "What school did you attend?"
+        }
+    ]).then(answers => {
+        const intern = new Intern(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.school);
+        employees.push(intern);
+        mainMenu();
+    })
+}
+
+
+
+
+
+
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
