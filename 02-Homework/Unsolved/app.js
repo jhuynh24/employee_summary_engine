@@ -126,8 +126,10 @@ function addIntern() {
 }
 
 function createTeam() {
-    console.log(render(employees));
-    
+    var employeeHtml = render(employees);
+    fs.writeFile(outputPath, employeeHtml, (err) => {
+        if (err) throw err;
+    });
 }
 
 
