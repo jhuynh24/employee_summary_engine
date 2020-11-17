@@ -116,7 +116,7 @@ function addIntern() {
             message: "What school did you attend?"
         }
     ]).then(answers => {
-        const intern = new Intern(answers.employeeName, answers.employeeId, answers.employeeEmail, answers.school);
+        const intern = new Intern(answers.employeeName, answers.employeeId, answers.employeeId, answers.school);
         employees.push(intern);
         mainMenu();
     })
