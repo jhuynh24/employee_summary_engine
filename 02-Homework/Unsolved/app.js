@@ -25,12 +25,15 @@ function mainMenu() {
         }
         else if (answers.menu === "add engineer") {
             //callback addEngineer function
+            addEngineer();
         }
         else if (answers.menu === "add intern") {
             //callback addIntern function
+            addIntern();
         }
         else {
             //callback createTeam
+            createTeam();
         }
     })
 }
@@ -87,7 +90,7 @@ function addEngineer() {
             message: "What is your Github username?"
         }
     ]).then(answers => {
-        const engineer = new Engineer(answers.employeeName, answers.employeeId, answers.employeeId, github);
+        const engineer = new Engineer(answers.employeeName, answers.employeeId, answers.employeeId, answers.github);
         employees.push(engineer);
         mainMenu();
     })
@@ -122,7 +125,10 @@ function addIntern() {
     })
 }
 
-
+function createTeam() {
+    console.log(render(employees));
+    
+}
 
 
 
