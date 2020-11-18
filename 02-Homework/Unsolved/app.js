@@ -16,7 +16,7 @@ function mainMenu() {
     inquirer.prompt({
         type: "list",
         name: "menu",
-        message: "What employee would you like to create?",
+        message: "Start building your team. What employee would you like to create?",
         choices: ["add manager", "add engineer", "add intern", "build team"]
     }).then(answers => {
         if (answers.menu === "add manager") {
